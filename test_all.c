@@ -58,7 +58,23 @@ void	test_strcmp(char *s1, char *s2)
 	printf(RESET);
 }
 
-/*
+void	test_strdup(char *str)
+{
+	printf("--strdup(\""BOLD"%s"RESET"\")--\n", str);
+	// libc
+	char *ret_libc = strdup(str);
+	// libasm
+	char *ret_asm = ft_strdup(str);
+
+	printf((strcmp(ret_libc, ret_asm) == 0) ? GREEN : RED);
+	printf("libasm: %s\n", ret_asm);
+	printf("libc  : %s\n", ret_libc);
+	printf(RESET);
+
+	free(ret_libc);
+	free(ret_asm);
+}
+
 void	test_write(int fd, char *str, size_t len)
 {
 	printf("--wirte("BOLD"%d, \"%s\", %zu"RESET")--\n", fd, str, len);
@@ -85,8 +101,7 @@ void	test_write(int fd, char *str, size_t len)
 	printf(RESET);
 	errno = 0;
 }
-*/
-/*
+
 void	test_read(char *filepath, int size)
 {
 	printf("--%s, size:%d--\n", filepath, size);
@@ -121,8 +136,7 @@ void	test_read(char *filepath, int size)
 	close(fd_asm);
 	errno = 0;
 }
-*/
-/*
+
 void	test_read_ex(int fd, char *buf_libc, char *buf_asm, int size)
 {
 	printf("--fd:%d, size:%d--\n", fd, size);
@@ -145,25 +159,6 @@ void	test_read_ex(int fd, char *buf_libc, char *buf_asm, int size)
 	printf(RESET);
 	errno = 0;
 }
-*/
-/*
-void	test_strdup(char *str)
-{
-	printf("--strdup(\""BOLD"%s"RESET"\")--\n", str);
-	// libc
-	char *ret_libc = strdup(str);
-	// libasm
-	char *ret_asm = ft_strdup(str);
-
-	printf((strcmp(ret_libc, ret_asm) == 0) ? GREEN : RED);
-	printf("libasm: %s\n", ret_asm);
-	printf("libc  : %s\n", ret_libc);
-	printf(RESET);
-
-	free(ret_libc);
-	free(ret_asm);
-}
-*/
 
 int	ret_0(void)
 {
@@ -215,14 +210,22 @@ int	main(int argc, char **argv)
 		test_strcmp("\xff\xff", "\xff");
 	}
 
-/*
+	if (flg || !strcmp(argv[1], "dup"))
+	{
+		printf("\n==============\n=== strdup ===\n==============\n");
+		test_strdup("test");
+		test_strdup("");
+		// test_strdup(NULL); // crash
+		// test_malloc(10);
+		// test_malloc(-1); // crash
+	}
+
 	if (flg || !strcmp(argv[1], "write"))
 	{
 		printf("\n==============\n=== write ====\n==============\n");
 		test_write(1, "test", 4);
 		test_write(1, "  ", 2);
 		test_write(1, "", 1);
-		// test_write(1, "", 2); // crush
 		test_write(1, "test", 2);
 		test_write(1, "123456789", 9);
 		// test_write(1, "123456789", 1000);
@@ -237,11 +240,11 @@ int	main(int argc, char **argv)
 		test_write(fd, NULL, 2);
 		test_write(-1, "tt", 2);
 		test_write(1, "123456789", -1);
+		// test_write(1, "", 2); // crush
 
 		close(fd);
 	}
-*/
-/*
+
 	if (flg || !strcmp(argv[1], "read"))
 	{
 		printf("\n==============\n===  read  ===\n==============\n");
@@ -265,17 +268,5 @@ int	main(int argc, char **argv)
 		free(buf_asm);
 		close(fd);
 	}
-*/
-/*
-	if (flg || !strcmp(argv[1], "dup"))
-	{
-		printf("\n==============\n=== strdup ===\n==============\n");
-		test_strdup("test");
-		test_strdup("");
-		// test_strdup(NULL); // crash
-		// test_malloc(10);
-		// test_malloc(-1); // crash
-	}
-*/
 }
 
