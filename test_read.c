@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	test_read("test.txt", 100);
 
 	printf("\n~~~ error case ~~~\n");
-	test_read("nothing.txt", 10);
+	test_read("read.txt", 100);
 	char *buf_libc = calloc(BUF_SIZE + 1, 1);
 	char *buf_asm = calloc(BUF_SIZE + 1, 1);
 	test_read_ex(-1, buf_libc, buf_asm, BUF_SIZE);
