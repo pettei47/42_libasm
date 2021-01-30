@@ -22,8 +22,8 @@ $(OBJS): %.o: %.s
 
 .PHONY: .re fclean clean test
 re: fclean all
-fclean: clean ; -rm -f $(NAME)
-clean: ; rm -rf srcs/*.o
+fclean: clean ; -rm -f $(NAME) ft_asm
+clean: ; rm -rf srcs/*.o ft_asm.dSYM
 
 test: all
 	gcc $(FLGS) -o ft_asm -L. test_all.c -lasm -g -fsanitize=address
