@@ -26,25 +26,25 @@ fclean: clean ; -rm -f $(NAME) ft_asm
 clean: ; rm -rf srcs/*.o ft_asm.dSYM
 
 test: all
-	gcc $(FLGS) -o ft_asm -L. test_all.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_all.c -lasm -g -fsanitize=address
 	./ft_asm
 
 .PHONY: len cpy cmp dup read write
 len: all
-	gcc $(FLGS) -o ft_asm -L. test_len.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_len.c -lasm -g -fsanitize=address
 	./ft_asm
 cpy: all
-	gcc $(FLGS) -o ft_asm -L. test_cpy.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_cpy.c -lasm -g -fsanitize=address
 	./ft_asm
 cmp: all
-	gcc $(FLGS) -o ft_asm -L. test_cmp.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_cmp.c -lasm -g -fsanitize=address
 	./ft_asm
 dup: all
-	gcc $(FLGS) -o ft_asm -L. test_dup.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_dup.c -lasm -g -fsanitize=address
 	./ft_asm
 read: all
-	gcc $(FLGS) -o ft_asm -L. test_read.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_read.c -lasm -g -fsanitize=address
 	./ft_asm
 write: all
-	gcc $(FLGS) -o ft_asm -L. test_write.c -lasm -g -fsanitize=address
+	gcc $(FLGS) -o ft_asm -L. main/test_write.c -lasm -g -fsanitize=address
 	./ft_asm
