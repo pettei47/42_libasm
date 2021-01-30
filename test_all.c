@@ -7,25 +7,6 @@
 
 #include "libasm.h"
 
-# define RESET			"\033[0m"
-# define BOLD			"\033[1m"
-# define BLACK			"\033[30m"
-# define RED			"\033[31m"
-# define GREEN			"\033[32m"
-# define YELLOW			"\033[33m"
-# define BLUE			"\033[34m"
-# define MAGENTA		"\033[35m"
-# define CYAN			"\033[36m"
-# define WHITE			"\033[37m"
-# define BOLDBLACK		"\033[1m\033[30m"
-# define BOLDRED		"\033[1m\033[31m"
-# define BOLDGREEN		"\033[1m\033[32m"
-# define BOLDYELLOW		"\033[1m\033[33m"
-# define BOLDBLUE		"\033[1m\033[34m"
-# define BOLDMAGENTA	"\033[1m\033[35m"
-# define BOLDCYAN		"\033[1m\033[36m"
-# define BOLDWHITE		"\033[1m\033[37m"
-
 #define BUF_SIZE (15)
 
 void	test_strlen(char *str)
@@ -65,7 +46,7 @@ void	test_strcpy(int destsize, char *src)
 	free(dst4libasm);
 	free(dst4libc);
 }
-
+/*
 void	test_strcmp(char *s1, char *s2)
 {
 	printf("--strcmp("BOLD"\"%s\", \"%s\""RESET")--\n", s1, s2);
@@ -76,7 +57,8 @@ void	test_strcmp(char *s1, char *s2)
 	printf("libc  : %d\n", ret_libc);
 	printf(RESET);
 }
-
+*/
+/*
 void	test_write(int fd, char *str, size_t len)
 {
 	printf("--wirte("BOLD"%d, \"%s\", %zu"RESET")--\n", fd, str, len);
@@ -103,13 +85,12 @@ void	test_write(int fd, char *str, size_t len)
 	printf(RESET);
 	errno = 0;
 }
-
+*/
+/*
 void	test_read(char *filepath, int size)
 {
 	printf("--%s, size:%d--\n", filepath, size);
-	/*
-	** run libasm
-	*/
+	// run libasm
 	int fd_asm = open(filepath, O_RDONLY);
 	char *buf_asm = calloc(sizeof(char), size + 1);
 	errno = 0;
@@ -117,9 +98,7 @@ void	test_read(char *filepath, int size)
 	if (ret_asm >= 0)
 		buf_asm[ret_asm] = 0;
 	int	errno_asm = errno;
-	/*
-	** run libc
-	*/
+	// run libc
 	int fd_libc = open(filepath, O_RDONLY);
 	char *buf_libc = calloc(sizeof(char), size + 1);
 	errno = 0;
@@ -128,46 +107,37 @@ void	test_read(char *filepath, int size)
 		buf_libc[ret_libc] = 0;
 	int	errno_libc = errno;
 
-	/*
-	** evaluate
-	*/
+	// evaluate
 	int isSuccess = (strcmp(buf_libc, buf_asm) == 0 && ret_libc == ret_asm && errno_libc == errno_asm) ? 1 : 0;
 	printf(isSuccess ? GREEN : RED);
 	printf("libc  : fd=%d, buf=["YELLOW"%s%s], ret=%zd, errno=%d\n", fd_libc, buf_libc, isSuccess ? GREEN : RED, ret_libc, errno_libc);
 	printf("libasm: fd=%d, buf=["YELLOW"%s%s], ret=%zd, errno=%d\n", fd_asm, buf_asm, isSuccess ? GREEN : RED, ret_asm, errno_asm);
 	printf(RESET);
 
-	/*
-	** destroy
-	*/
+	// destroy
 	free(buf_libc);
 	close(fd_libc);
 	free(buf_asm);
 	close(fd_asm);
 	errno = 0;
 }
-
+*/
+/*
 void	test_read_ex(int fd, char *buf_libc, char *buf_asm, int size)
 {
 	printf("--fd:%d, size:%d--\n", fd, size);
-	/*
-	** run libasm
-	*/
+	// run libasm
 	errno = 0;
 	ssize_t ret_asm = ft_read(fd, buf_asm, size);
 	buf_asm[BUF_SIZE] = 0;
 	int	errno_asm = errno;
-	/*
-	** run libc
-	*/
+	// run libc
 	errno = 0;
 	ssize_t ret_libc = read(fd, buf_libc, size);
 	buf_libc[BUF_SIZE] = 0;
 	int	errno_libc = errno;
 
-	/*
-	** evaluate
-	*/
+	// evaluate
 	int isSuccess = (strcmp(buf_libc, buf_asm) == 0 && ret_libc == ret_asm && errno_libc == errno_asm) ? 1 : 0;
 	printf(isSuccess ? GREEN : RED);
 	printf("libasm: fd=%d, buf=["YELLOW"%s%s], ret=%zd, errno=%d\n", fd, buf_asm, isSuccess ? GREEN : RED, ret_asm, errno_asm);
@@ -175,7 +145,8 @@ void	test_read_ex(int fd, char *buf_libc, char *buf_asm, int size)
 	printf(RESET);
 	errno = 0;
 }
-
+*/
+/*
 void	test_strdup(char *str)
 {
 	printf("--strdup(\""BOLD"%s"RESET"\")--\n", str);
@@ -192,6 +163,7 @@ void	test_strdup(char *str)
 	free(ret_libc);
 	free(ret_asm);
 }
+*/
 
 int	ret_0(void)
 {
@@ -225,7 +197,7 @@ int	main(int argc, char **argv)
 		// test_strcpy(4, NULL); // crash
 		// test_strcpy(0, NULL); // crash
 	}
-
+/*
 	if (flg || !strcmp(argv[1], "cmp"))
 	{
 		printf("\n==============\n=== strcmp ===\n==============\n");
@@ -242,7 +214,8 @@ int	main(int argc, char **argv)
 		test_strcmp("", "test");
 		test_strcmp("\xff\xff", "\xff");
 	}
-
+*/
+/*
 	if (flg || !strcmp(argv[1], "write"))
 	{
 		printf("\n==============\n=== write ====\n==============\n");
@@ -267,7 +240,8 @@ int	main(int argc, char **argv)
 
 		close(fd);
 	}
-
+*/
+/*
 	if (flg || !strcmp(argv[1], "read"))
 	{
 		printf("\n==============\n===  read  ===\n==============\n");
@@ -291,7 +265,8 @@ int	main(int argc, char **argv)
 		free(buf_asm);
 		close(fd);
 	}
-
+*/
+/*
 	if (flg || !strcmp(argv[1], "dup"))
 	{
 		printf("\n==============\n=== strdup ===\n==============\n");
@@ -301,5 +276,6 @@ int	main(int argc, char **argv)
 		// test_malloc(10);
 		// test_malloc(-1); // crash
 	}
+*/
 }
 
