@@ -46,7 +46,7 @@ void	test_strcpy(int destsize, char *src)
 	free(dst4libasm);
 	free(dst4libc);
 }
-/*
+
 void	test_strcmp(char *s1, char *s2)
 {
 	printf("--strcmp("BOLD"\"%s\", \"%s\""RESET")--\n", s1, s2);
@@ -57,7 +57,7 @@ void	test_strcmp(char *s1, char *s2)
 	printf("libc  : %d\n", ret_libc);
 	printf(RESET);
 }
-*/
+
 /*
 void	test_write(int fd, char *str, size_t len)
 {
@@ -197,7 +197,7 @@ int	main(int argc, char **argv)
 		// test_strcpy(4, NULL); // crash
 		// test_strcpy(0, NULL); // crash
 	}
-/*
+
 	if (flg || !strcmp(argv[1], "cmp"))
 	{
 		printf("\n==============\n=== strcmp ===\n==============\n");
@@ -214,7 +214,7 @@ int	main(int argc, char **argv)
 		test_strcmp("", "test");
 		test_strcmp("\xff\xff", "\xff");
 	}
-*/
+
 /*
 	if (flg || !strcmp(argv[1], "write"))
 	{

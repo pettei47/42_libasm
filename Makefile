@@ -2,6 +2,7 @@ NAME := libasm.a
 
 includes := .
 SRCS := srcs/ft_strlen.s \
+		srcs/ft_strcmp.s \
 		srcs/ft_strcpy.s \
 
 OBJS := $(SRCS:.s=.o)

@@ -5,7 +5,8 @@ section .text
 _ft_strcpy:
 	push	rbx					; rbxを使うので、元々の値をスタックに逃しておく
 	xor		rax, rax			; char *ret = NULL;
-	mov		rcx, 0				; int	i   = 0;
+	xor		rbx, rbx			; char 	bl  = '\0';
+	xor		rcx, rcx			; int	i   = 0;
 
 .loop:
 	mov		bl, [rsi+rcx]		; char bl = s2[i]
