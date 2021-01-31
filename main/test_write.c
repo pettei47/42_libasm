@@ -43,6 +43,8 @@ int	ret_0(void)
 
 int	main(int argc, char **argv)
 {
+	write(42, "abc\n", 4);
+	ft_write(42, "abc\n", 4);
 	printf("\n==============\n=== write ====\n==============\n");
 	test_write(1, "test", 4);
 	test_write(1, "  ", 2);

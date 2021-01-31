@@ -11,9 +11,8 @@ _ft_read:
 	jmp		.end
 
 .err:
-	push	rax				; errnoをスタックに逃す
+	mov		rbx, rax		; errnoをrbxに逃す
 	call	___error		; rax = &errno
-	pop		rbx				; rbx = errno
 	mov		[rax], rbx		; *rax = rbx
 	mov		rax, -1			; エラー時のwriteの戻り値は-1
 
