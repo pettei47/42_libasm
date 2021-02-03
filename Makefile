@@ -20,13 +20,17 @@ $(NAME): $(OBJS)
 $(OBJS): %.o: %.s
 	nasm -f macho64 $< -o $@
 
-.PHONY: .re fclean clean test
+.PHONY: .re fclean clean test main
 re: fclean all
 fclean: clean ; -rm -f $(NAME) ft_asm
 clean: ; rm -rf srcs/*.o ft_asm.dSYM
 
 test: all
 	gcc $(FLGS) -o ft_asm -L. main/test_all.c -lasm -g -fsanitize=address
+	./ft_asm
+
+main: all
+	gcc $(FLGS) -o ft_asm -L. main.c -lasm -g -fsanitize=address
 	./ft_asm
 
 .PHONY: len cpy cmp dup read write
