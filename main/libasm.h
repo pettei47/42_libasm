@@ -6,7 +6,7 @@
 /*   By: teppei <teppei@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 18:02:12 by kdoi              #+#    #+#             */
-/*   Updated: 2021/01/30 20:36:17 by teppei           ###   ########.fr       */
+/*   Updated: 2021/02/03 23:56:44 by teppei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 # include <sys/types.h>
 # include <errno.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 # define RESET			"\033[0m"
 # define BOLD			"\033[1m"
@@ -35,6 +38,7 @@
 # define BOLDMAGENTA	"\033[1m\033[35m"
 # define BOLDCYAN		"\033[1m\033[36m"
 # define BOLDWHITE		"\033[1m\033[37m"
+# define LONG_STR		"098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321"
 
 size_t		ft_strlen(const char *s);
 char		*ft_strcpy(char *dst, const char *src);
