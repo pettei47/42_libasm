@@ -16,7 +16,7 @@ _ft_strcpy:
 	inc		rcx					; i++;
 	jnz		.loop				; jump to .loop
 
-.end
+.end:
 	mov		rax, rdi			; ret = s1
 	pop		rbx					; 逃しておいたrbxを戻す
 	ret
