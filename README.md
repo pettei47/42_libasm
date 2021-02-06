@@ -1,3 +1,16 @@
+# libasm
+
+This is one of 42's project.<br>
+I rewrite libc functions -> ft_ functions
+- strlen	-> ft_strlen
+- strcpy	-> ft_strcpy
+- strcmp	-> ft_strcmp
+- write		-> ft_write
+- read		-> ft_read
+- strdup	-> ft_strdup
+
+
+
 # How to review
 	make
 -> nasm compiles libasm.a
