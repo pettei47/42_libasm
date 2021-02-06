@@ -2,3 +2,4 @@ ft_asm.dSYM/
 .vscode/
 srcs/*.o
 *.a
+.gitignore
