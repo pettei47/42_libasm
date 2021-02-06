@@ -14,14 +14,13 @@ _ft_strdup:
 	jz		.arg_err		; true -> err
 	call	_ft_strlen		; rax = ft_strlen;
 	inc		rax				; rax = len + 1;
-	push	rdi				; strを逃す
+	mov		rsi, rdi		; rsi = rdi (= str)
 	mov		rdi, rax		; rdi = rax (= len + 1)
 	call	_malloc			; rax = malloc(rdi);
 							; もし失敗していたら、この時点でerrnoに値が設定される
 	test	rax, rax		; rax == NULL ?
 	jz		.alloc_err		; true -> jump to error
 	mov		rdi, rax		; rdi = rax (=malloc(strlen + 1))
-	pop		rsi				; 逃しておいたstrをrsiに入れる
 	call	_ft_strcpy		; rax = strcpy(rdi, rsi)
 	ret
 

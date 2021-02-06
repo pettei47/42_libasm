@@ -9,8 +9,8 @@ _ft_strcpy:
 	xor		rcx, rcx			; int	i   = 0;
 
 .loop:
-	mov		bl, [rsi+rcx]		; char bl = s2[i]
-	mov		[rdi+rcx], bl		; s1[i] = bl
+	mov		bl, byte [rsi+rcx]		; char bl = s2[i]
+	mov		byte [rdi+rcx], bl		; s1[i] = bl
 	test	bl, bl				; if (bl == '\0')
 	jz		.end				; 	return
 	inc		rcx					; i++;
